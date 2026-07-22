@@ -1,0 +1,111 @@
+:root {
+  color-scheme: light dark;
+  --cell-size: 44px;
+  --border-thin: 1px solid #999;
+  --border-thick: 3px solid #333;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.toolbar button,
+.toolbar select {
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+.toolbar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, var(--cell-size));
+  grid-template-rows: repeat(9, var(--cell-size));
+  border: var(--border-thick);
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  border: var(--border-thin);
+  background: canvas;
+  color: canvastext;
+  cursor: pointer;
+  user-select: none;
+}
+
+.cell.given {
+  font-weight: bold;
+  background: color-mix(in srgb, canvastext 8%, canvas);
+  cursor: default;
+}
+
+.cell:nth-child(3n) {
+  border-right: var(--border-thick);
+}
+
+.cell:nth-child(9n + 1) {
+  border-left: var(--border-thick);
+}
+
+.row-thick-top {
+  border-top: var(--border-thick);
+}
+
+.row-thick-bottom {
+  border-bottom: var(--border-thick);
+}
+
+.cell.selected {
+  background: color-mix(in srgb, dodgerblue 25%, canvas);
+}
+
+.cell.error {
+  background: color-mix(in srgb, crimson 30%, canvas);
+  color: crimson;
+}
+
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(5, 2.5rem);
+  gap: 0.4rem;
+}
+
+.numpad button {
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.status {
+  min-height: 1.5em;
+  font-weight: bold;
+}
